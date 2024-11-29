@@ -61,7 +61,7 @@ sql > FLUSH PRIVILEGES;
 ```
 ### 4. Run  
 ```  bash 
-mv install.bash /usr/local/bin/todocli 
+sudo cp install.bash /usr/local/bin/todocli 
 sudo chmod +x /usr/local/bin/todocli
 todocli help 
 todocli setup-db
