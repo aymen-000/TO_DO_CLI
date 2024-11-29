@@ -54,13 +54,15 @@ export DBPASS="your_database_password"
 mysql -u root -p 
 sql > CREATE DATABASE TODOS
 sql > use TODOS 
-sql > GRANT ALL PRIVILEGES ON *.* TO 'your_database_user'@'localhost' IDENTIFIED BY 'your_password';
+sql > CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+sql > GRANT ALL PRIVILEGES ON TODOS.* TO 'username'@'localhost';
 sql > FLUSH PRIVILEGES;
 
 ```
 ### 4. Run  
 ```  bash 
-sudo ./todocli install
+mv install.bash /usr/local/bin/todocli 
+sudo chmod +x /usr/local/bin/todocli
 todocli help 
 todocli setup-db
 todocli build

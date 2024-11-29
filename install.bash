@@ -80,7 +80,7 @@ setup_db() {
 
 
     SQL=$(cat <<EOF
-DROP TABLE IF EXISTS todo;
+USE TODOS ; 
 CREATE TABLE todo (
   id           INT AUTO_INCREMENT NOT NULL,
   title        VARCHAR(255) NOT NULL,
