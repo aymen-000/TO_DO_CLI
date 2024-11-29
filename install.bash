@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# Todo CLI Management Script
 
-# Determine the script's directory
+
+
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-PROJECT_DIR="$HOME/dev/TODOCLI"  # Ensure the path is correctly resolved
+PROJECT_DIR="$HOME/dev/TODOCLI" 
 
-# Color codes for enhanced output
+
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+NC='\033[0m' 
 
-# Function to display usage information
+
 usage() {
     echo -e "${YELLOW}Todo CLI Management Script${NC}"
     echo "Usage:"
@@ -24,7 +24,7 @@ usage() {
     echo "  todocli setup-db      - Create the database and table"
 }
 
-# Build the application
+
 build() {
     echo -e "${GREEN}Building Todo CLI Application...${NC}"
     cd "$PROJECT_DIR" || exit 1
@@ -37,7 +37,7 @@ build() {
     fi
 }
 
-# Install the application globally
+
 install() {
     build
     echo -e "${GREEN}Installing Todo CLI...${NC}"
@@ -50,13 +50,13 @@ install() {
     fi
 }
 
-# Run the application
+
 run() {
     cd "$PROJECT_DIR" || exit 1
     go run ./ "$@"
 }
 
-# Uninstall the application
+
 uninstall() {
     echo -e "${YELLOW}Uninstalling Todo CLI...${NC}"
     sudo rm /usr/local/bin/todocli
@@ -68,7 +68,6 @@ uninstall() {
     fi
 }
 
-# Setup the database
 setup_db() {
     echo -e "${GREEN}Setting up the database...${NC}"
 
@@ -79,7 +78,7 @@ setup_db() {
         exit 1
     fi
 
-    # SQL to execute
+
     SQL=$(cat <<EOF
 DROP TABLE IF EXISTS todo;
 CREATE TABLE todo (
@@ -93,7 +92,7 @@ CREATE TABLE todo (
 EOF
 )
 
-    # Execute the SQL using MySQL
+
     echo "$SQL" | mysql -u"$DBUSER" -p"$DBPASS"
     if [ $? -eq 0 ]; then
         echo -e "${GREEN}Database setup completed successfully!${NC}"
@@ -103,7 +102,7 @@ EOF
     fi
 }
 
-# Main script logic
+
 case "$1" in
     build)
         build
