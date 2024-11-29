@@ -4,7 +4,7 @@
 
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-PROJECT_DIR="$HOME/dev/TODOCLI" 
+PROJECT_DIR="$./TO_DO_CLI" 
 
 
 GREEN='\033[0;32m'
